@@ -16,6 +16,10 @@ func _process(delta):
 	pass
 	
 func update_ui_ingredients_from_current_list_ingredient():
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()
+		
 	for ingredient in current_list_ingredient:
 		var ui_ingredient :UIIngredient = ingredient_scene.instantiate()
 		ui_ingredient.ingredient_name = ingredient

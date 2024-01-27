@@ -19,6 +19,7 @@ func _process(delta):
 
 func _update_image_with_name()-> void:
 	$image.texture = load("res://Visual/UI/" + ingredient_name + ".png")
+	printt("SET UI INGREDIENT AS : ", ingredient_name)
 
 
 

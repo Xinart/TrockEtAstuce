@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6wu7msosajtr"]
+[gd_scene load_steps=18 format=3 uid="uid://c6wu7msosajtr"]
 
 [ext_resource type="Script" path="res://Scripts/UIIngredientCarrier.gd" id="2_4n8sj"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_d2fcm"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bi2pvd1pfl8hq" path="res://Visual/Merchants/forgeron_.png" id="6_yl1fx"]
 [ext_resource type="Texture2D" uid="uid://dtabs0fvdkcyx" path="res://Visual/Merchants/etranger.png" id="8_4o3wi"]
 [ext_resource type="Script" path="res://Scripts/MerchantsAnimPlayer.gd" id="10_4aryy"]
-[ext_resource type="PackedScene" uid="uid://dvctmicwlrdm3" path="res://Scenes/Objects/ingredient.tscn" id="10_66vte"]
-[ext_resource type="Texture2D" uid="uid://buokth2g7te02" path="res://Visual/Animation/niveau_suivant.png" id="11_8pxwb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpwrg"]
 font_size = 64
@@ -24,9 +22,6 @@ font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_soioj"]
 font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_8uijx"]
-font_size = 58
 
 [sub_resource type="Animation" id="Animation_17c2t"]
 resource_name = "farmer_ifle"
@@ -72,56 +67,10 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_p1e2a"]
 length = 0.001
 
-[sub_resource type="Animation" id="Animation_ipx0b"]
-resource_name = "next_level"
-length = 2.5
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 2.25, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-725, 165), Vector2(80, 165), Vector2(1296, 165), Vector2(2184, 165)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_set_data_for_step_of_current_level"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../../../../../MerchantsAnimPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["farmer_ifle", -1, 1.0, false],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sraa6"]
 _data = {
 "RESET": SubResource("Animation_p1e2a"),
-"farmer_ifle": SubResource("Animation_17c2t"),
-"next_level": SubResource("Animation_ipx0b")
+"farmer_ifle": SubResource("Animation_17c2t")
 }
 
 [node name="main_scene" type="Node2D"]
@@ -180,9 +129,9 @@ script = ExtResource("2_4n8sj")
 z_index = -1
 layout_mode = 0
 offset_left = 159.5
-offset_top = 320.5
+offset_top = 334.12
 offset_right = 409.5
-offset_bottom = 570.501
+offset_bottom = 584.121
 texture = ExtResource("4_2ojrd")
 expand_mode = 1
 
@@ -205,9 +154,9 @@ script = ExtResource("2_4n8sj")
 z_index = -1
 layout_mode = 0
 offset_left = 231.5
-offset_top = 339.5
+offset_top = 321.339
 offset_right = 463.5
-offset_bottom = 579.5
+offset_bottom = 561.339
 texture = ExtResource("6_yl1fx")
 expand_mode = 1
 
@@ -229,9 +178,9 @@ script = ExtResource("2_4n8sj")
 [node name="Etranger" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel/Tente"]
 layout_mode = 0
 offset_left = 203.5
-offset_top = 496.5
+offset_top = 505.58
 offset_right = 408.5
-offset_bottom = 721.5
+offset_bottom = 730.581
 texture = ExtResource("8_4o3wi")
 expand_mode = 1
 
@@ -283,7 +232,7 @@ layout_mode = 2
 
 [node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "J'ai besoin de :"
+text = "I need :"
 label_settings = SubResource("LabelSettings_jpwrg")
 
 [node name="IngredientNeededLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
@@ -386,78 +335,13 @@ alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Trock"
+text = "Trade"
 
 [node name="MergePlayerIngredientButton" type="Button" parent="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = " Combiner les objets de l'inventaire "
-
-[node name="EndStepPanel" type="Panel" parent="CanvasLayer/Control/Panel"]
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -637.0
-offset_top = -262.0
-offset_right = 469.0
-offset_bottom = 196.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StepIngredient" parent="CanvasLayer/Control/Panel/EndStepPanel" instance=ExtResource("10_66vte")]
-z_index = 5
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 722.0
-offset_top = 20.0
-offset_right = 1089.0
-offset_bottom = 371.0
-ingredient_name = "seau"
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/EndStepPanel"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 74.0
-offset_right = 682.0
-offset_bottom = 317.0
-text = "Bien joué !
-Vous avez trouvé 
-la bonne combinaison !"
-label_settings = SubResource("LabelSettings_8uijx")
-
-[node name="ExiteEndStepPanelbutton" type="Button" parent="CanvasLayer/Control/Panel/EndStepPanel"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -95.0
-offset_right = 100.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "Suite"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-z_index = 10
-layout_mode = 0
-offset_left = 2184.0
-offset_top = 165.0
-offset_right = 2825.99
-offset_bottom = 486.0
-rotation = 0.261799
-texture = ExtResource("11_8pxwb")
+text = "Merge items"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -470,4 +354,3 @@ script = ExtResource("10_4aryy")
 
 [connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/TradeButton" to="CanvasLayer/Control/Panel/Player" method="_on_trade_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_button_down"]
-[connection signal="button_down" from="CanvasLayer/Control/Panel/EndStepPanel/ExiteEndStepPanelbutton" to="." method="_on_exite_end_step_panelbutton_button_down"]
