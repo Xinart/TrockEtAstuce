@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6wu7msosajtr"]
+
+[ext_resource type="Script" path="res://Scripts/UIIngredientCarrier.gd" id="2_4n8sj"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_d2fcm"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="2_ijt8f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpwrg"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_fq4cp"]
+font_size = 64
+
+[node name="main_scene" type="Node2D"]
+script = ExtResource("2_ijt8f")
+nb_merchant = null
+nb_item_per_merchant = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="merchantPanel" type="GridContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 200
+columns = 3
+
+[node name="blacksmith" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="farmer" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="traveler" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="Player" type="GridContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -524.0
+offset_top = -432.0
+offset_right = 633.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_d2fcm")
+
+[node name="AskingIngredientContainer" type="ColorRect" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -747.0
+offset_bottom = 211.0
+grow_horizontal = 0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/AskingIngredientContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "I need :"
+label_settings = SubResource("LabelSettings_jpwrg")
+
+[node name="IngredientNeededLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ingredient"
+label_settings = SubResource("LabelSettings_fq4cp")
+
+[node name="TradeButton" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 1475.0
+offset_top = 778.0
+offset_right = 1822.0
+offset_bottom = 910.0
+theme_override_font_sizes/font_size = 48
+text = "Trade"
+
+[node name="MergePlayerIngredientButton" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 778.0
+offset_right = 1413.0
+offset_bottom = 910.0
+theme_override_font_sizes/font_size = 48
+text = "Merge items"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="button_down" from="CanvasLayer/Control/Panel/TradeButton" to="CanvasLayer/Control/Panel/Player" method="_on_trade_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/Panel/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_button_down"]
