@@ -8,6 +8,10 @@ var merchant_ui_ingredient_to_trade : UIIngredient
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	var image_file = load("res://Visual/yolo/pointeur.png")
+	Input.set_custom_mouse_cursor(image_file)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	## Get the list of single base ingredients
 	#for ingredient_data in PlayerData.list_recipes:
 		#for base_ingredient_name in ingredient_data.list_ingredient:

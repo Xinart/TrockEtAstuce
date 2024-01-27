@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://caw3pxs2jac75"]
+
+[ext_resource type="Texture2D" uid="uid://7ypwwufbbs0r" path="res://Visual/yolo/etoile_4.png" id="1_yaixy"]
+
+[sub_resource type="Gradient" id="Gradient_huclg"]
+colors = PackedColorArray(1, 1, 1, 1, 0.687215, 0.687215, 0.687215, 1)
+
+[node name="Explosion" type="CPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 300
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_yaixy")
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 180.0
+initial_velocity_min = 94.34
+initial_velocity_max = 1000.0
+angular_velocity_min = -94.64
+angular_velocity_max = 18.63
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_huclg")
+
+[connection signal="ready" from="." to="." method="set_emitting" flags=6 binds= [true]]

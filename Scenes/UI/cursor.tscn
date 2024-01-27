@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0888l305uwct"]
+
+[ext_resource type="Texture2D" uid="uid://hbwdu58ngj6s" path="res://Visual/yolo/pointeur.png" id="1_1ny1g"]
+[ext_resource type="Script" path="res://Scripts/Cursor.gd" id="2_fwpfp"]
+
+[node name="Cursor" type="Control"]
+z_index = 15
+layout_mode = 3
+anchors_preset = 0
+offset_right = 78.0
+offset_bottom = 105.0
+script = ExtResource("2_fwpfp")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CursorImage" type="TextureRect" parent="Control"]
+process_priority = -10
+layout_mode = 0
+offset_left = -26.0
+offset_top = -2.0
+offset_right = 87.0
+offset_bottom = 150.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+texture = ExtResource("1_1ny1g")
+expand_mode = 1
