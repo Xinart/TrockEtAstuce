@@ -40,8 +40,8 @@ autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
-position = Vector2(956.5, 537.5)
-scale = Vector2(1.01927, 1.01759)
+position = Vector2(957, 540.5)
+scale = Vector2(1.01979, 1.02315)
 texture = ExtResource("3_vxm2r")
 
 [node name="Label" type="Label" parent="."]
