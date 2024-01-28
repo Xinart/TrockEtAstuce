@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0ynx6x4q26hl"]
+
+[ext_resource type="PackedScene" uid="uid://3jnpgcbp6kl3" path="res://Scenes/UI/menu.tscn" id="1_tv3w8"]
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="Menu" parent="." instance=ExtResource("1_tv3w8")]
+offset_top = -3.0
+offset_bottom = -3.0
+game_entry_scene = "res://Scenes/main_scene.tscn"

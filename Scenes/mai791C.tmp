@@ -1,0 +1,624 @@
+[gd_scene load_steps=26 format=3 uid="uid://c6wu7msosajtr"]
+
+[ext_resource type="Script" path="res://Scripts/UIIngredientCarrier.gd" id="2_4n8sj"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_d2fcm"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="2_ijt8f"]
+[ext_resource type="Texture2D" uid="uid://cels7muvu42f5" path="res://Visual/Merchants/marchance.png" id="4_2ojrd"]
+[ext_resource type="Texture2D" uid="uid://m77fodrfh1h0" path="res://Visual/Merchants/forge.png" id="4_wdktt"]
+[ext_resource type="Texture2D" uid="uid://cyj4t7pjl6a7a" path="res://Visual/Merchants/etalage.png" id="6_il41w"]
+[ext_resource type="Texture2D" uid="uid://bi2pvd1pfl8hq" path="res://Visual/Merchants/forgeron_.png" id="6_yl1fx"]
+[ext_resource type="Texture2D" uid="uid://byk5lroy13x58" path="res://Visual/Merchants/tente.png" id="7_qi7c4"]
+[ext_resource type="Texture2D" uid="uid://dtabs0fvdkcyx" path="res://Visual/Merchants/etranger.png" id="8_4o3wi"]
+[ext_resource type="Script" path="res://Scripts/MerchantsAnimPlayer.gd" id="10_4aryy"]
+[ext_resource type="PackedScene" uid="uid://dvctmicwlrdm3" path="res://Scenes/Objects/ingredient.tscn" id="10_66vte"]
+[ext_resource type="Theme" uid="uid://dn1q0qrdx8emw" path="res://UI/Themes/new_theme.tres" id="10_mk6ni"]
+[ext_resource type="Texture2D" uid="uid://buokth2g7te02" path="res://Visual/Animation/niveau_suivant.png" id="11_8pxwb"]
+[ext_resource type="Texture2D" uid="uid://b7y1v5oj8fr5m" path="res://Visual/yolo/etoile_5_b.png" id="13_pu1ku"]
+[ext_resource type="Texture2D" uid="uid://wmdlm80h8wro" path="res://Visual/Background/fond.jpg" id="14_63wyi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpwrg"]
+font_size = 64
+font_color = Color(0.898039, 0.764706, 0.454902, 1)
+shadow_size = 10
+shadow_color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fq4cp"]
+font_size = 56
+font_color = Color(0.898039, 0.764706, 0.454902, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5yef"]
+font_size = 48
+font_color = Color(0.898039, 0.764706, 0.454902, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_soioj"]
+font_size = 48
+font_color = Color(0.898039, 0.764706, 0.454902, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj38x"]
+font_size = 80
+font_color = Color(0.945098, 0.792157, 0.615686, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8uijx"]
+font_size = 58
+font_color = Color(0.945098, 0.792157, 0.615686, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_p1e2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../NextLevel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_17c2t"]
+resource_name = "farmer_ifle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(140, 320.455), Vector2(140, 335.5), Vector2(140, 320.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Forge/Forgeron:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(150, 339.5), Vector2(150, 319.5), Vector2(150, 339.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Tente/Etranger:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(225.961, 403.5), Vector2(225.961, 413.5), Vector2(225.961, 403.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ipx0b"]
+resource_name = "next_level"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../NextLevel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.8, 2.5),
+"transitions": PackedFloat32Array(0.189465, 2, 0.466517, 1.27456),
+"update": 0,
+"values": [Vector2(-725, 165), Vector2(650, 165), Vector2(650, 165), Vector2(2068, 165)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_set_data_for_step_of_current_level"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../../../MerchantsAnimPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["farmer_ifle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../NextLevel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(0.353554, 1),
+"update": 0,
+"values": [0.261799, 12.5664]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sraa6"]
+_data = {
+"RESET": SubResource("Animation_p1e2a"),
+"farmer_ifle": SubResource("Animation_17c2t"),
+"next_level": SubResource("Animation_ipx0b")
+}
+
+[node name="main_scene" type="Node2D"]
+script = ExtResource("2_ijt8f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="merchantPanel" type="Control" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -284.0
+offset_right = -43.0
+offset_bottom = 269.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Etalage" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel"]
+z_index = 1
+layout_mode = 2
+offset_left = -19.0
+offset_top = -144.0
+offset_right = 510.0
+offset_bottom = 666.0
+scale = Vector2(1.09669, 1)
+texture = ExtResource("6_il41w")
+
+[node name="farmer" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel/Etalage"]
+layout_mode = 2
+offset_left = 45.5917
+offset_top = 644.0
+offset_right = 457.592
+offset_bottom = 826.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="Marchande" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel/Etalage"]
+z_index = -1
+layout_mode = 0
+offset_left = 140.0
+offset_top = 320.455
+offset_right = 390.0
+offset_bottom = 570.456
+scale = Vector2(0.802079, 1.09875)
+texture = ExtResource("4_2ojrd")
+expand_mode = 1
+
+[node name="Forge" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel"]
+layout_mode = 2
+offset_left = 593.0
+offset_top = -198.0
+offset_right = 1164.0
+offset_bottom = 612.0
+scale = Vector2(1.09916, 1.00497)
+texture = ExtResource("4_wdktt")
+
+[node name="blacksmith" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel/Forge"]
+layout_mode = 2
+offset_left = 70.9633
+offset_top = 613.949
+offset_right = 503.963
+offset_bottom = 761.949
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="Forgeron" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel/Forge"]
+z_index = -1
+layout_mode = 0
+offset_left = 150.0
+offset_top = 339.5
+offset_right = 382.0
+offset_bottom = 579.501
+scale = Vector2(0.944198, 1)
+texture = ExtResource("6_yl1fx")
+expand_mode = 1
+
+[node name="Tente" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel"]
+layout_mode = 2
+offset_left = 1224.0
+offset_top = -117.0
+offset_right = 1820.0
+offset_bottom = 693.0
+scale = Vector2(1.04, 1)
+texture = ExtResource("7_qi7c4")
+
+[node name="traveler" type="GridContainer" parent="CanvasLayer/Control/Panel/merchantPanel/Tente"]
+layout_mode = 2
+offset_left = 94.2308
+offset_top = 649.0
+offset_right = 594.231
+offset_bottom = 790.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_4n8sj")
+
+[node name="Etranger" type="TextureRect" parent="CanvasLayer/Control/Panel/merchantPanel/Tente"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 403.5
+offset_right = 410.0
+offset_bottom = 628.5
+scale = Vector2(0.750661, 1)
+texture = ExtResource("8_4o3wi")
+expand_mode = 1
+
+[node name="Player" type="GridContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -149.0
+offset_right = 791.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+script = ExtResource("2_d2fcm")
+
+[node name="AskingIngredientContainer" type="Panel" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -918.0
+offset_top = 20.0
+offset_right = -16.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme = ExtResource("10_mk6ni")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/AskingIngredientContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "Besoin de : "
+label_settings = SubResource("LabelSettings_jpwrg")
+
+[node name="IngredientNeededLabel" type="Label" parent="CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "Ingredient"
+label_settings = SubResource("LabelSettings_fq4cp")
+
+[node name="Levelindicator" type="Panel" parent="CanvasLayer/Control/Panel"]
+z_index = 1
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 362.0
+offset_bottom = 136.0
+theme = ExtResource("10_mk6ni")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/Levelindicator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/Levelindicator/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel/Levelindicator/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "Niveau "
+label_settings = SubResource("LabelSettings_jpwrg")
+
+[node name="Level_label" type="Label" parent="CanvasLayer/Control/Panel/Levelindicator/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "1"
+label_settings = SubResource("LabelSettings_fq4cp")
+
+[node name="Stepindicator2" type="Panel" parent="CanvasLayer/Control/Panel"]
+z_index = 1
+layout_mode = 1
+offset_left = 378.0
+offset_top = 50.0
+offset_right = 628.0
+offset_bottom = 133.0
+theme = ExtResource("10_mk6ni")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/Stepindicator2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Panel/Stepindicator2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Control/Panel/Stepindicator2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "Etape"
+label_settings = SubResource("LabelSettings_p5yef")
+
+[node name="levelStepLabel" type="Label" parent="CanvasLayer/Control/Panel/Stepindicator2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_mk6ni")
+text = "1"
+label_settings = SubResource("LabelSettings_soioj")
+
+[node name="MarginContainer" type="Control" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -135.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="Control" parent="CanvasLayer/Control/Panel/MarginContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1555.0
+offset_top = -128.0
+offset_right = 296.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TradeButton" type="Button" parent="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_left = 389.0
+offset_top = 12.0
+offset_right = 589.0
+offset_bottom = 107.0
+theme = ExtResource("10_mk6ni")
+theme_override_font_sizes/font_size = 48
+text = "Troc"
+
+[node name="MergePlayerIngredientButton" type="Button" parent="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer"]
+z_index = 10
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+offset_left = 1189.0
+offset_top = 14.0
+offset_right = 1569.0
+offset_bottom = 109.0
+pivot_offset = Vector2(197, 47)
+theme = ExtResource("10_mk6ni")
+theme_override_font_sizes/font_size = 48
+text = "Associer"
+
+[node name="EndStepPanel" type="Panel" parent="CanvasLayer/Control/Panel"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -637.0
+offset_top = -262.0
+offset_right = 469.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_mk6ni")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/EndStepPanel"]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 30.0
+offset_right = 647.0
+offset_bottom = 127.0
+theme = ExtResource("10_mk6ni")
+text = "BIEN JOUÉ !
+"
+label_settings = SubResource("LabelSettings_sj38x")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/Panel/EndStepPanel"]
+layout_mode = 2
+offset_left = 31.0
+offset_top = 151.0
+offset_right = 643.0
+offset_bottom = 306.0
+theme = ExtResource("10_mk6ni")
+text = "Vous avez trouvé 
+la bonne combinaison !
+"
+label_settings = SubResource("LabelSettings_8uijx")
+horizontal_alignment = 1
+
+[node name="ExiteEndStepPanelbutton" type="Button" parent="CanvasLayer/Control/Panel/EndStepPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -329.0
+offset_top = -126.0
+offset_right = -129.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_mk6ni")
+theme_override_font_sizes/font_size = 48
+text = "Suite"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Panel/EndStepPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -422.0
+offset_top = -200.0
+offset_right = -34.0
+offset_bottom = 188.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.435294, 0.2, 0.101961, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="StepIngredient" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect/MarginContainer" instance=ExtResource("10_66vte")]
+z_index = 5
+layout_mode = 2
+color = Color(0.439216, 0.203922, 0.105882, 1)
+ingredient_name = "seau"
+
+[node name="NextLevel" type="TextureRect" parent="CanvasLayer/Control"]
+z_index = 10
+layout_mode = 0
+offset_left = -725.0
+offset_top = 165.0
+offset_right = -83.0215
+offset_bottom = 486.0
+rotation = 0.261799
+pivot_offset = Vector2(321.315, 163.514)
+texture = ExtResource("11_8pxwb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/Control/NextLevel"]
+z_index = -1
+position = Vector2(289.923, 204.946)
+amount = 80
+lifetime = 1.5
+speed_scale = 0.8
+texture = ExtResource("13_pu1ku")
+emission_shape = 1
+emission_sphere_radius = 128.0
+angular_velocity_min = -298.87
+angular_velocity_max = 190.19
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = -20
+position = Vector2(958, 540)
+scale = Vector2(0.989188, 0.998148)
+texture = ExtResource("14_63wyi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MerchantsAnimPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer/Control/Panel/merchantPanel/Etalage/Marchande")
+libraries = {
+"": SubResource("AnimationLibrary_sraa6")
+}
+script = ExtResource("10_4aryy")
+
+[connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/TradeButton" to="CanvasLayer/Control/Panel/Player" method="_on_trade_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/Panel/EndStepPanel/ExiteEndStepPanelbutton" to="." method="_on_exite_end_step_panelbutton_button_down"]

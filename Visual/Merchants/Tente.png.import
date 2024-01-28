@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byk5lroy13x58"
-path="res://.godot/imported/Tente.png-6085d31dc228184db9b4b9e1464d031e.ctex"
+path="res://.godot/imported/tente.png-42824ce4120e4f4c55308a836acbc352.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Visual/Merchants/Tente.png"
-dest_files=["res://.godot/imported/Tente.png-6085d31dc228184db9b4b9e1464d031e.ctex"]
+source_file="res://Visual/Merchants/tente.png"
+dest_files=["res://.godot/imported/tente.png-42824ce4120e4f4c55308a836acbc352.ctex"]
 
 [params]
 

@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://3jnpgcbp6kl3"]
+
+[ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_oamed"]
+[ext_resource type="Theme" uid="uid://dn1q0qrdx8emw" path="res://UI/Themes/new_theme.tres" id="2_lpxvs"]
+
+[node name="Menu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oamed")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.5
+offset_top = -212.0
+offset_right = 288.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 100
+text = "Jouer"
+
+[node name="CreditButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 523.0
+offset_top = 753.0
+offset_right = 878.0
+offset_bottom = 920.0
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 100
+text = "Crédit"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1014.0
+offset_top = 756.0
+offset_right = 1422.0
+offset_bottom = 921.0
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 100
+text = "Quitter"
+
+[node name="Credit" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lpxvs")
+
+[node name="ExitCredit" type="Button" parent="Credit"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 810.0
+offset_right = 483.0
+offset_bottom = 977.0
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 100
+text = "Retour"
+
+[node name="Label" type="Label" parent="Credit"]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 56.0
+offset_right = 1250.0
+offset_bottom = 298.0
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 200
+text = "Crédits"
+
+[node name="Label2" type="Label" parent="Credit"]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 298.0
+offset_right = 1531.0
+offset_bottom = 752.0
+theme = ExtResource("2_lpxvs")
+theme_override_font_sizes/font_size = 70
+text = "Programmation : Beaussart Martin
+Lead Art : Dochy Mathilde
+Game design : Goderniaux Mathilde
+Graphiste : Meuleman Mathieu
+Graphiste : Sermant Ugo"
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="CreditButton" to="." method="_on_credit_button_button_down"]
+[connection signal="button_down" from="Quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="Credit/ExitCredit" to="." method="_on_exit_credit_button_down"]
