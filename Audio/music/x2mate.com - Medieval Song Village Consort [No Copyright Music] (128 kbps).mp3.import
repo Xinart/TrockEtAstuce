@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btgr2w3p17vh5"
+path="res://.godot/imported/x2mate.com - Medieval Song Village Consort [No Copyright Music] (128 kbps).mp3-b4f7516fba2c612be20a80a693e958a9.mp3str"
+
+[deps]
+
+source_file="res://Audio/music/x2mate.com - Medieval Song Village Consort [No Copyright Music] (128 kbps).mp3"
+dest_files=["res://.godot/imported/x2mate.com - Medieval Song Village Consort [No Copyright Music] (128 kbps).mp3-b4f7516fba2c612be20a80a693e958a9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwcttcf3ouamo"
+path="res://.godot/imported/Level complete.mp3-b5050e7e8061071641785f9fdf75034f.mp3str"
+
+[deps]
+
+source_file="res://Audio/vitory/Level complete.mp3"
+dest_files=["res://.godot/imported/Level complete.mp3-b5050e7e8061071641785f9fdf75034f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

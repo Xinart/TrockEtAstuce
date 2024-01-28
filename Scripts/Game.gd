@@ -9,6 +9,9 @@ class_name Game
 @onready var level_label = $CanvasLayer/Control/Panel/Levelindicator/MarginContainer/HBoxContainer/Level_label
 @onready var level_step_label = $CanvasLayer/Control/Panel/Stepindicator2/MarginContainer/HBoxContainer/levelStepLabel
 @onready var step_ingredient = $CanvasLayer/Control/Panel/EndStepPanel/ColorRect/MarginContainer/StepIngredient
+@onready var sfx_audio_stream_player_2d : AudioStreamPlayer2D = $SFXAudioStreamPlayer2D
+
+
 
 var list_base_ingredients :Array[String]
 var current_list_merchant_ingredient :Array[String]
@@ -45,6 +48,10 @@ var current_level_step :LevelStep
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	end_step_panel.visible = false
+	GameData.current_level_index = 0
+	GameData.list_level[GameData.current_level_index].current_step_index = 0
+	GameData.list_level[GameData.current_level_index].current_level_step = \
+	GameData.list_level[GameData.current_level_index].list_level_steps[0]
 	_set_data_for_step_of_current_level()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,10 +70,18 @@ func _on_merge_player_ingredient_button_button_down():
 			break
 			
 	if does_player_have_all_ingredients_for_current_recipe:
+		sfx_audio_stream_player_2d.stop()
+		sfx_audio_stream_player_2d.stream = load("res://Audio/vitory/Step_complete.mp3")
+		sfx_audio_stream_player_2d.play()
+		
 		end_step_panel.visible = true
 		var explosion_effect :CPUParticles2D = explosion.instantiate()
 		merge_player_ingredient_button.add_child(explosion_effect)
 		explosion_effect.global_position = merge_player_ingredient_button.global_position
+	else:
+		sfx_audio_stream_player_2d.stop()
+		sfx_audio_stream_player_2d.stream = load("res://Audio/wrong.mp3")
+		sfx_audio_stream_player_2d.play()
 	# remove selection on player when it combination
 	if player.player_ui_ingredient_to_trade:
 		player.player_ui_ingredient_to_trade.is_selected = false
@@ -98,7 +113,7 @@ func _set_data_for_step_of_current_level()-> void:
 		level_label.text = str(GameData.current_level_index + 1)
 		level_step_label.text = str(GameData.list_level[GameData.current_level_index].current_step_index + 1)
 		
-		ingredient_needed_label.text = current_level_step.ingredient_to_merge.name
+		ingredient_needed_label.text = current_level_step.ingredient_to_merge.name.to_upper()
 		step_ingredient.ingredient_name = current_level_step.ingredient_to_merge.name
 		step_ingredient._update_image_with_name()
 		
@@ -111,7 +126,12 @@ func _on_exite_end_step_panelbutton_button_down():
 	GameData.list_level[GameData.current_level_index]._switch_to_next_step()
 	if GameData.list_level[GameData.current_level_index].current_step_index == GameData.list_level[GameData.current_level_index].list_level_steps.size():
 		GameData.current_level_index += 1
+		sfx_audio_stream_player_2d.stop()
+		sfx_audio_stream_player_2d.stream = load("res://Audio/vitory/Level complete.mp3")
+		sfx_audio_stream_player_2d.play()
+		
 		$MerchantsAnimPlayer.play("next_level")
+		
 	else:
 		_set_data_for_step_of_current_level()
 		

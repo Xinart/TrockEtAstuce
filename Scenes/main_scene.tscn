@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c6wu7msosajtr"]
+[gd_scene load_steps=35 format=3 uid="uid://c6wu7msosajtr"]
 
 [ext_resource type="Script" path="res://Scripts/UIIngredientCarrier.gd" id="2_4n8sj"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_d2fcm"]
@@ -16,9 +16,11 @@
 [ext_resource type="Theme" uid="uid://dn1q0qrdx8emw" path="res://UI/Themes/new_theme.tres" id="10_mk6ni"]
 [ext_resource type="Texture2D" uid="uid://buokth2g7te02" path="res://Visual/Animation/niveau_suivant.png" id="11_8pxwb"]
 [ext_resource type="Texture2D" uid="uid://bhqbpph7ckepy" path="res://Visual/Merchants/tente_closed.png" id="11_bq7nb"]
+[ext_resource type="Texture2D" uid="uid://o4ja8l6q1bu5" path="res://Visual/Background/inventaire.png" id="12_p1wxf"]
 [ext_resource type="Texture2D" uid="uid://b7y1v5oj8fr5m" path="res://Visual/yolo/etoile_5_b.png" id="13_pu1ku"]
 [ext_resource type="Texture2D" uid="uid://wmdlm80h8wro" path="res://Visual/Background/fond.jpg" id="14_63wyi"]
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="17_eg5jc"]
+[ext_resource type="AudioStream" uid="uid://btgr2w3p17vh5" path="res://Audio/music/x2mate.com - Medieval Song Village Consort [No Copyright Music] (128 kbps).mp3" id="20_s26qx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpwrg"]
 font_size = 64
@@ -200,6 +202,33 @@ _data = {
 "next_level": SubResource("Animation_ipx0b")
 }
 
+[sub_resource type="Animation" id="Animation_dyr3b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_y20ht"]
 resource_name = "transit_to_end"
 length = 1.5
@@ -240,33 +269,6 @@ tracks/2/keys = {
 "args": [],
 "method": &"_go_to_end_scene"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_dyr3b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mw73s"]
@@ -429,6 +431,15 @@ offset_right = 1841.0
 offset_bottom = 694.0
 texture = ExtResource("11_bq7nb")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Panel"]
+layout_mode = 2
+offset_left = 658.0
+offset_top = 885.0
+offset_right = 1215.0
+offset_bottom = 1081.0
+texture = ExtResource("12_p1wxf")
+expand_mode = 1
+
 [node name="Player" type="GridContainer" parent="CanvasLayer/Control/Panel"]
 layout_mode = 1
 anchors_preset = 7
@@ -436,14 +447,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -242.0
-offset_top = -149.0
-offset_right = 791.0
-offset_bottom = -24.0
+offset_left = -259.0
+offset_top = -140.0
+offset_right = 774.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
 columns = 3
 script = ExtResource("2_d2fcm")
 
@@ -808,6 +819,12 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_mw73s")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_s26qx")
+autoplay = true
+
+[node name="SFXAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/TradeButton" to="CanvasLayer/Control/Panel/Player" method="_on_trade_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_button_down"]

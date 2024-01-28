@@ -5,6 +5,7 @@ var list_base_ingredients :Array[String]
 
 var player_ui_ingredient_to_trade : UIIngredient
 var merchant_ui_ingredient_to_trade : UIIngredient
+@onready var sfx_audio_stream_player_2d = $"../../../../SFXAudioStreamPlayer2D"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,6 +62,11 @@ func _process(delta):
 						merchant_ui_ingredient_to_trade.is_selected = true
 						
 func _on_trade_button_button_down():
+	
+	sfx_audio_stream_player_2d.stop()
+	sfx_audio_stream_player_2d.stream = load("res://Audio/troc.mp3")
+	sfx_audio_stream_player_2d.play()
+	
 	if merchant_ui_ingredient_to_trade != null and player_ui_ingredient_to_trade != null:
 		var ui_merchant : UIIngredientCarrier = merchant_ui_ingredient_to_trade.get_parent()
 

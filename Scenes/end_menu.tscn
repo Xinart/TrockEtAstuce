@@ -1,19 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://6brxkssxnqcu"]
+[gd_scene load_steps=4 format=3 uid="uid://6brxkssxnqcu"]
 
 [ext_resource type="PackedScene" uid="uid://3jnpgcbp6kl3" path="res://Scenes/UI/menu.tscn" id="1_tv3w8"]
+[ext_resource type="AudioStream" uid="uid://rbjm5c2mr5is" path="res://Audio/vitory/GameComplete.mp3" id="2_2c4kf"]
+[ext_resource type="Texture2D" uid="uid://d2lv4uk3xld7g" path="res://Visual/Background/endgame.jpg" id="3_074bh"]
 
 [node name="MainMenu" type="CanvasLayer"]
 
 [node name="Menu" parent="." instance=ExtResource("1_tv3w8")]
+self_modulate = Color(1, 1, 1, 0)
 offset_top = -3.0
 offset_bottom = -3.0
 game_entry_scene = "res://Scenes/main_menu.tscn"
 
 [node name="PlayButton" parent="Menu" index="0"]
-offset_left = -935.0
-offset_top = 239.0
-offset_right = -183.0
-offset_bottom = 434.0
+offset_left = 165.0
+offset_top = -253.0
+offset_right = 917.0
+offset_bottom = -58.0
 text = " Menu principal "
 
 [node name="CreditButton" parent="Menu" index="1"]
@@ -24,17 +27,17 @@ offset_right = 222.0
 offset_bottom = 1600.0
 
 [node name="Quit" parent="Menu" index="2"]
-offset_left = 31.0
-offset_top = 567.0
-offset_right = 439.0
-offset_bottom = 732.0
+offset_left = 1466.0
+offset_top = 57.0
+offset_right = 1874.0
+offset_bottom = 222.0
 
 [node name="Credit" parent="Menu" index="3"]
 visible = true
-offset_left = 1211.0
-offset_top = 589.0
-offset_right = -79.0
-offset_bottom = -103.0
+offset_left = 980.0
+offset_top = 526.0
+offset_right = -5.0
+offset_bottom = -14.0
 metadata/_edit_group_ = true
 
 [node name="ExitCredit" parent="Menu/Credit" index="0"]
@@ -45,17 +48,30 @@ offset_right = -121.0
 offset_bottom = 925.0
 
 [node name="Label" parent="Menu/Credit" index="1"]
-offset_left = 174.0
-offset_top = 10.0
-offset_right = 495.0
-offset_bottom = 131.0
+offset_left = 47.0
+offset_top = 11.0
+offset_right = 902.0
+offset_bottom = 380.0
 theme_override_font_sizes/font_size = 100
+text = "Merci d'avoir joué ! 
+Crédits :"
 
 [node name="Label2" parent="Menu/Credit" index="2"]
-offset_left = 32.0
-offset_top = 132.0
-offset_right = 612.0
-offset_bottom = 378.0
+offset_left = 85.0
+offset_top = 262.0
+offset_right = 665.0
+offset_bottom = 508.0
 theme_override_font_sizes/font_size = 35
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Menu"]
+stream = ExtResource("2_2c4kf")
+volume_db = 5.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(962.75, 548.25)
+scale = Vector2(1.01797, 1.02361)
+texture = ExtResource("3_074bh")
 
 [editable path="Menu"]
