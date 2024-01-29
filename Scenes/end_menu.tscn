@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d2lv4uk3xld7g" path="res://Visual/Background/endgame.jpg" id="3_074bh"]
 
 [node name="MainMenu" type="CanvasLayer"]
+scale = Vector2(0.66, 0.66)
+transform = Transform2D(0.66, 0, 0, 0.66, 0, 0)
 
 [node name="Menu" parent="." instance=ExtResource("1_tv3w8")]
 self_modulate = Color(1, 1, 1, 0)

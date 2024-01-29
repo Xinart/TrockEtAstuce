@@ -309,10 +309,10 @@ _data = {
 [node name="main_scene" type="Node2D"]
 script = ExtResource("2_ijt8f")
 end_game_scene = "res://Scenes/end_menu.tscn"
-nb_merchant = null
-nb_item_per_merchant = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.667, 0.667)
+transform = Transform2D(0.667, 0, 0, 0.667, 0, 0)
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -611,20 +611,19 @@ theme_override_font_sizes/font_size = 48
 text = "Troc"
 
 [node name="EndStepPanel" type="Panel" parent="CanvasLayer/Control/Panel"]
-visible = false
 z_index = 50
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -637.0
-offset_top = -262.0
-offset_right = 469.0
-offset_bottom = 196.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -864.708
+offset_top = -408.156
+offset_right = 241.292
+offset_bottom = 49.8441
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("10_mk6ni")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/Panel/EndStepPanel"]
@@ -748,12 +747,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 642.0
+offset_bottom = 361.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_eg5jc")
 game_entry_scene = "res://Scenes/main_menu.tscn"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Control/Menu"]
+z_index = 50
 layout_mode = 0
 offset_left = 738.0
 offset_top = 745.0
@@ -775,6 +777,7 @@ theme_override_font_sizes/font_size = 100
 text = "Quitter"
 
 [node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/Menu"]
+z_index = 50
 layout_mode = 0
 offset_left = 586.0
 offset_top = 397.0
@@ -817,6 +820,8 @@ stream = ExtResource("20_s26qx")
 autoplay = true
 
 [node name="SFXAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SFXVictoryAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="button_down" from="CanvasLayer/Control/Panel/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_button_down"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/Panel/MergePlayerIngredientButton" to="." method="_on_merge_player_ingredient_button_mouse_entered"]

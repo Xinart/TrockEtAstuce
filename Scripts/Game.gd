@@ -10,8 +10,9 @@ class_name Game
 @onready var level_step_label = $CanvasLayer/Control/Panel/Stepindicator2/MarginContainer/HBoxContainer/levelStepLabel
 @onready var step_ingredient = $CanvasLayer/Control/Panel/EndStepPanel/ColorRect/EndStepPanel/StepIngredient
 @onready var sfx_audio_stream_player_2d : AudioStreamPlayer2D = $SFXAudioStreamPlayer2D
+@onready var sfx_victory_audio_stream_player_2d_2 : AudioStreamPlayer2D = $SFXVictoryAudioStreamPlayer2D2
 
-@onready var player_inventory: Sprite2D = $CanvasLayer/PlayerInventory
+@onready var player_inventory: Sprite2D = $CanvasLayer/Control/PlayerInventory
 @onready var player_inventory_init_scale_x = player_inventory.scale.x
 @onready var player_inventory_init_scale_y = player_inventory.scale.y
 
@@ -76,18 +77,18 @@ func _on_merge_player_ingredient_button_button_down():
 			break
 			
 	if does_player_have_all_ingredients_for_current_recipe:
-		sfx_audio_stream_player_2d.stop()
-		sfx_audio_stream_player_2d.stream = load("res://Audio/vitory/Step_complete.mp3")
-		sfx_audio_stream_player_2d.play()
+		#sfx_audio_stream_player_2d.stop()
+		sfx_victory_audio_stream_player_2d_2.stream = load("res://Audio/vitory/Step_complete.mp3")
+		sfx_victory_audio_stream_player_2d_2.play()
 		
 		end_step_panel.visible = true
 		var explosion_effect :CPUParticles2D = explosion.instantiate()
 		merge_player_ingredient_button.add_child(explosion_effect)
 		explosion_effect.global_position = merge_player_ingredient_button.global_position
 	else:
-		sfx_audio_stream_player_2d.stop()
-		sfx_audio_stream_player_2d.stream = load("res://Audio/wrong.mp3")
-		sfx_audio_stream_player_2d.play()
+		#sfx_audio_stream_player_2d.stop()
+		sfx_victory_audio_stream_player_2d_2.stream = load("res://Audio/wrong.mp3")
+		sfx_victory_audio_stream_player_2d_2.play()
 		
 		end_anim_player.play("new_animation")
 		await end_anim_player.animation_finished
@@ -126,7 +127,6 @@ func _set_data_for_step_of_current_level()-> void:
 		step_ingredient.ingredient_name = current_level_step.ingredient_to_merge.name
 		step_ingredient._update_image_with_name()
 		
-		
 		_update_ui_merchant_status()
 		
 
@@ -135,9 +135,9 @@ func _on_exite_end_step_panelbutton_button_down():
 	GameData.list_level[GameData.current_level_index]._switch_to_next_step()
 	if GameData.list_level[GameData.current_level_index].current_step_index == GameData.list_level[GameData.current_level_index].list_level_steps.size():
 		GameData.current_level_index += 1
-		sfx_audio_stream_player_2d.stop()
-		sfx_audio_stream_player_2d.stream = load("res://Audio/vitory/Level complete.mp3")
-		sfx_audio_stream_player_2d.play()
+		#sfx_audio_stream_player_2d.stop()
+		sfx_victory_audio_stream_player_2d_2.stream = load("res://Audio/vitory/Level complete.mp3")
+		sfx_victory_audio_stream_player_2d_2.play()
 		
 		$MerchantsAnimPlayer.play("next_level")
 		

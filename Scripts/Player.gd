@@ -34,7 +34,7 @@ func _process(delta):
 		for ui_ingredient : UIIngredient in get_tree().get_nodes_in_group("UI_Ingredient"):
 			if ui_ingredient.is_mouse_over:
 				
-				sfx_audio_stream_player_2d.stop()
+				#sfx_audio_stream_player_2d.stop()
 				sfx_audio_stream_player_2d.stream = load("res://Audio/click.mp3")
 				sfx_audio_stream_player_2d.play()
 				# if the ingredient is in the player inventory
@@ -67,7 +67,7 @@ func _process(delta):
 						
 func _on_trade_button_button_down():
 	
-	sfx_audio_stream_player_2d.stop()
+	#sfx_audio_stream_player_2d.stop()
 	sfx_audio_stream_player_2d.stream = load("res://Audio/troc.mp3")
 	sfx_audio_stream_player_2d.play()
 	

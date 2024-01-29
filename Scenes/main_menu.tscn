@@ -6,55 +6,20 @@
 [ext_resource type="Theme" uid="uid://dn1q0qrdx8emw" path="res://UI/Themes/new_theme.tres" id="4_3u05b"]
 
 [node name="MainMenu" type="CanvasLayer"]
+scale = Vector2(0.662, 0.662)
+transform = Transform2D(0.662, 0, 0, 0.662, 0, 0)
 
-[node name="Menu" parent="." instance=ExtResource("1_tv3w8")]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 4
-size_flags_vertical = 4
-game_entry_scene = "res://Scenes/main_scene.tscn"
-
-[node name="PlayButton" parent="Menu" index="0"]
-anchors_preset = -1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 327.0
-offset_top = 269.0
-offset_right = 726.0
-offset_bottom = 402.0
-theme_override_font_sizes/font_size = 80
-
-[node name="CreditButton" parent="Menu" index="1"]
-offset_left = 382.0
-offset_top = 443.0
-offset_right = 668.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 80
-
-[node name="Quit" parent="Menu" index="2"]
-offset_left = 365.0
-offset_top = 587.0
-offset_right = 679.0
-offset_bottom = 704.0
-theme_override_font_sizes/font_size = 80
-
-[node name="Sprite2D" type="Sprite2D" parent="Menu"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
 position = Vector2(957, 543.5)
 scale = Vector2(1.01979, 1.02315)
 texture = ExtResource("3_vxm2r")
 
-[node name="Label" type="Label" parent="Menu"]
-offset_left = 62.0
-offset_top = -8.0
-offset_right = 1429.0
-offset_bottom = 234.0
+[node name="Label" type="Label" parent="."]
+offset_left = 196.375
+offset_top = -7.55289
+offset_right = 1735.37
+offset_bottom = 320.447
 theme = ExtResource("4_3u05b")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
@@ -67,4 +32,52 @@ text = "Troc et Astuces"
 stream = ExtResource("2_3ife0")
 autoplay = true
 
-[editable path="Menu"]
+[node name="Menu2" parent="." instance=ExtResource("1_tv3w8")]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 654.0
+offset_bottom = 371.0
+game_entry_scene = "res://Scenes/main_scene.tscn"
+
+[node name="PlayButton" parent="Menu2" index="0"]
+offset_left = -648.269
+offset_top = -303.808
+offset_right = -214.269
+offset_bottom = -143.808
+
+[node name="CreditButton" parent="Menu2" index="1"]
+offset_left = 368.58
+offset_top = 604.23
+offset_right = 682.58
+offset_bottom = 745.23
+
+[node name="Quit" parent="Menu2" index="2"]
+offset_left = 333.837
+offset_top = 435.045
+offset_right = 730.837
+offset_bottom = 576.045
+
+[node name="Credit" parent="Menu2" index="3"]
+offset_left = 197.885
+offset_top = 232.628
+offset_right = -731.115
+offset_bottom = -115.372
+
+[node name="ExitCredit" parent="Menu2/Credit" index="0"]
+offset_left = 31.7221
+offset_top = 569.486
+offset_right = 318.722
+offset_bottom = 704.486
+
+[node name="Label" parent="Menu2/Credit" index="1"]
+offset_left = 37.7643
+offset_top = 25.6798
+offset_right = 679.764
+offset_bottom = 267.68
+
+[node name="Label2" parent="Menu2/Credit" index="2"]
+offset_left = 131.42
+offset_top = 205.438
+offset_right = 1304.42
+offset_bottom = 659.438
+
+[editable path="Menu2"]
