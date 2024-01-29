@@ -23,6 +23,11 @@ func _process(delta):
 		else:
 			scale.x = size_scale_on_mouse_hover
 			scale.y = size_scale_on_mouse_hover
+	
+	if get_parent().name == "EndStepPanel":
+		scale.x = 1
+		scale.y = 1
+		
 			
 
 		
@@ -36,10 +41,10 @@ func _update_image_with_name()-> void:
 
 func _on_mouse_entered():
 	is_mouse_over = true
-	if !is_selected:
+	if !is_selected :
+		print(get_parent().name)
 		scale.x = size_scale_on_mouse_hover
 		scale.y = size_scale_on_mouse_hover
-	print("YOLO")
 		
 
 

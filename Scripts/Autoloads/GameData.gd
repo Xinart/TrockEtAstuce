@@ -32,9 +32,9 @@ var list_level : Array[Level] = [
 			,LevelStep.new(
 				["fer à cheval","pioche"] # Player inventory 
 				,[] # Farmer inventory 
-				,["seau","corde"] # Blacksmith inventory 
+				,["seau","tissu"] # Blacksmith inventory 
 				,[] # Stranger inventory 
-			,IngredientData.new("chapeau",["corde","seau"]) # Object to find to pass the step
+			,IngredientData.new("chapeau",["tissu","seau"]) # Object to find to pass the step
 			)
 			# 1.5
 			,LevelStep.new(

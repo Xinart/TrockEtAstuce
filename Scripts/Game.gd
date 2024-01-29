@@ -8,7 +8,7 @@ class_name Game
 @onready var ingredient_needed_label = $CanvasLayer/Control/Panel/AskingIngredientContainer/MarginContainer/HBoxContainer/IngredientNeededLabel
 @onready var level_label = $CanvasLayer/Control/Panel/Levelindicator/MarginContainer/HBoxContainer/Level_label
 @onready var level_step_label = $CanvasLayer/Control/Panel/Stepindicator2/MarginContainer/HBoxContainer/levelStepLabel
-@onready var step_ingredient = $CanvasLayer/Control/Panel/EndStepPanel/ColorRect/MarginContainer/StepIngredient
+@onready var step_ingredient = $CanvasLayer/Control/Panel/EndStepPanel/ColorRect/EndStepPanel/StepIngredient
 @onready var sfx_audio_stream_player_2d : AudioStreamPlayer2D = $SFXAudioStreamPlayer2D
 
 @onready var player_inventory: Sprite2D = $CanvasLayer/PlayerInventory
@@ -54,6 +54,9 @@ func _ready():
 	GameData.list_level[GameData.current_level_index].current_step_index = 0
 	GameData.list_level[GameData.current_level_index].current_level_step = \
 	GameData.list_level[GameData.current_level_index].list_level_steps[0]
+	for level in GameData.list_level:
+		level.current_step_index = 0
+		level.current_level_step = level.list_level_steps[0]
 	_set_data_for_step_of_current_level()
 	Input.set_custom_mouse_cursor(load("res://Visual/yolo/pointeur_petit.png"))
 	
@@ -89,7 +92,7 @@ func _on_merge_player_ingredient_button_button_down():
 		end_anim_player.play("new_animation")
 		await end_anim_player.animation_finished
 	# remove selection on player when it combination
-	if player.player_ui_ingredient_to_trade:
+	if player.player_ui_ingredient_to_trade: 
 		player.player_ui_ingredient_to_trade.is_selected = false
 		player.player_ui_ingredient_to_trade = null
 	if player.merchant_ui_ingredient_to_trade:

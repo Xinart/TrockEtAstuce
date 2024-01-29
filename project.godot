@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TrocEtAstuce"
 config/description="Bienvenu dans troc et astuces. Rien de plus simple ! Tu choisis un objet dans ton inventaire, tu en prends un autre et PAF, tu obtiens un TRUC ! N’hésite pas à troquer au marché. Comme ça, tu serais bien équipé !"
-config/version="1.1.0"
+config/version="1.1.1"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Visual/TrocEtAstuceIcone.svg"

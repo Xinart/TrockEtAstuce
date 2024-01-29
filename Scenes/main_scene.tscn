@@ -231,7 +231,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PlayerInventory:self_modulate")
+tracks/2/path = NodePath("CanvasLayer/Control/PlayerInventory:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -247,7 +247,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PlayerInventory:self_modulate")
+tracks/0/path = NodePath("CanvasLayer/Control/PlayerInventory:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -309,6 +309,8 @@ _data = {
 [node name="main_scene" type="Node2D"]
 script = ExtResource("2_ijt8f")
 end_game_scene = "res://Scenes/end_menu.tscn"
+nb_merchant = null
+nb_item_per_merchant = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -319,6 +321,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 self_modulate = Color(1, 1, 1, 0)
@@ -681,7 +685,7 @@ grow_horizontal = 0
 grow_vertical = 2
 color = Color(0.435294, 0.2, 0.101961, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect"]
+[node name="EndStepPanel" type="MarginContainer" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -693,7 +697,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="StepIngredient" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect/MarginContainer" instance=ExtResource("10_66vte")]
+[node name="StepIngredient" parent="CanvasLayer/Control/Panel/EndStepPanel/ColorRect/EndStepPanel" instance=ExtResource("10_66vte")]
 z_index = 5
 layout_mode = 2
 color = Color(0.439216, 0.203922, 0.105882, 1)
@@ -780,13 +784,13 @@ theme = ExtResource("10_mk6ni")
 theme_override_font_sizes/font_size = 100
 text = " Menu principal "
 
-[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Control"]
 z_index = -20
 position = Vector2(960, 540)
 texture = ExtResource("14_63wyi")
 metadata/_edit_lock_ = true
 
-[node name="PlayerInventory" type="Sprite2D" parent="CanvasLayer"]
+[node name="PlayerInventory" type="Sprite2D" parent="CanvasLayer/Control"]
 z_index = -20
 position = Vector2(866, 990)
 scale = Vector2(0.822398, 0.879807)
