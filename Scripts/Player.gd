@@ -10,7 +10,7 @@ var merchant_ui_ingredient_to_trade : UIIngredient
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	var image_file = load("res://Visual/yolo/pointeur.png")
+	var image_file = load("res://Visual/yolo/pointeur_petit.png")
 	Input.set_custom_mouse_cursor(image_file)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	## Get the list of single base ingredients
@@ -33,6 +33,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_mouse_left_click"):
 		for ui_ingredient : UIIngredient in get_tree().get_nodes_in_group("UI_Ingredient"):
 			if ui_ingredient.is_mouse_over:
+				
+				sfx_audio_stream_player_2d.stop()
+				sfx_audio_stream_player_2d.stream = load("res://Audio/click.mp3")
+				sfx_audio_stream_player_2d.play()
 				# if the ingredient is in the player inventory
 				if ui_ingredient.get_parent().name == name:
 					# if ingredient exists

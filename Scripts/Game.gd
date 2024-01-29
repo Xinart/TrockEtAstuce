@@ -11,7 +11,9 @@ class_name Game
 @onready var step_ingredient = $CanvasLayer/Control/Panel/EndStepPanel/ColorRect/MarginContainer/StepIngredient
 @onready var sfx_audio_stream_player_2d : AudioStreamPlayer2D = $SFXAudioStreamPlayer2D
 
-
+@onready var player_inventory: Sprite2D = $CanvasLayer/PlayerInventory
+@onready var player_inventory_init_scale_x = player_inventory.scale.x
+@onready var player_inventory_init_scale_y = player_inventory.scale.y
 
 var list_base_ingredients :Array[String]
 var current_list_merchant_ingredient :Array[String]
@@ -24,7 +26,7 @@ var nb_current_merchant_items :int
 @onready var traveler :UIIngredientCarrier = $CanvasLayer/Control/Panel/merchantPanel/Tente/traveler
 @onready var blacksmith :UIIngredientCarrier = $CanvasLayer/Control/Panel/merchantPanel/Forge/blacksmith
 @onready var end_step_panel :Panel = $CanvasLayer/Control/Panel/EndStepPanel
-@onready var merge_player_ingredient_button = $CanvasLayer/Control/Panel/MarginContainer/HBoxContainer/MergePlayerIngredientButton
+@onready var merge_player_ingredient_button: Button = $CanvasLayer/Control/Panel/MergePlayerIngredientButton
 
 @onready var etalage :TextureRect = $CanvasLayer/Control/Panel/merchantPanel/Etalage
 @onready var forge :TextureRect = $CanvasLayer/Control/Panel/merchantPanel/Forge
@@ -53,6 +55,7 @@ func _ready():
 	GameData.list_level[GameData.current_level_index].current_level_step = \
 	GameData.list_level[GameData.current_level_index].list_level_steps[0]
 	_set_data_for_step_of_current_level()
+	Input.set_custom_mouse_cursor(load("res://Visual/yolo/pointeur_petit.png"))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -82,6 +85,9 @@ func _on_merge_player_ingredient_button_button_down():
 		sfx_audio_stream_player_2d.stop()
 		sfx_audio_stream_player_2d.stream = load("res://Audio/wrong.mp3")
 		sfx_audio_stream_player_2d.play()
+		
+		end_anim_player.play("new_animation")
+		await end_anim_player.animation_finished
 	# remove selection on player when it combination
 	if player.player_ui_ingredient_to_trade:
 		player.player_ui_ingredient_to_trade.is_selected = false
@@ -161,3 +167,13 @@ func _update_ui_merchant_status():
 		tente.visible = true
 
 
+
+
+func _on_merge_player_ingredient_button_mouse_entered() -> void:
+	player_inventory.scale.x = player_inventory_init_scale_x * 1.2
+	player_inventory.scale.y = player_inventory_init_scale_y * 1.2
+
+
+func _on_merge_player_ingredient_button_mouse_exited() -> void:
+	player_inventory.scale.x = player_inventory_init_scale_x
+	player_inventory.scale.y = player_inventory_init_scale_y

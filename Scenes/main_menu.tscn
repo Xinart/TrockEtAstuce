@@ -14,10 +14,15 @@ offset_bottom = -3.0
 game_entry_scene = "res://Scenes/main_scene.tscn"
 
 [node name="PlayButton" parent="Menu" index="0"]
-offset_left = -633.0
-offset_top = -271.0
-offset_right = -234.0
-offset_bottom = -138.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 327.0
+offset_top = 269.0
+offset_right = 726.0
+offset_bottom = 402.0
 theme_override_font_sizes/font_size = 80
 
 [node name="CreditButton" parent="Menu" index="1"]

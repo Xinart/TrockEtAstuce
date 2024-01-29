@@ -30,11 +30,11 @@ var list_level : Array[Level] = [
 			)
 			# 1.4
 			,LevelStep.new(
-				["tissu","pioche"] # Player inventory 
+				["fer à cheval","pioche"] # Player inventory 
 				,[] # Farmer inventory 
-				,["fer à cheval","corde"] # Blacksmith inventory 
+				,["seau","corde"] # Blacksmith inventory 
 				,[] # Stranger inventory 
-			,IngredientData.new("chapeau",["corde","tissu"]) # Object to find to pass the step
+			,IngredientData.new("chapeau",["corde","seau"]) # Object to find to pass the step
 			)
 			# 1.5
 			,LevelStep.new(
@@ -46,9 +46,9 @@ var list_level : Array[Level] = [
 			)
 			# 1.6
 			,LevelStep.new(
-				["corde","tissu"] # Player inventory 
+				["corde","bougie"] # Player inventory 
 				,[] # Farmer inventory 
-				,["fourche","bougie"] # Blacksmith inventory 
+				,["fourche","tissu"] # Blacksmith inventory 
 				,[] # Stranger inventory 
 			,IngredientData.new("porte serviette",["tissu","fourche"]) # Object to find to pass the step
 			)
@@ -57,9 +57,9 @@ var list_level : Array[Level] = [
 		,Level.new([
 			# 2.1
 			LevelStep.new(
-				["corde","casque"] # Player inventory 
+				["épée","casque"] # Player inventory 
 				,["pastèque","pioche"] # Farmer inventory 
-				,["épée","fer à cheval"] # Blacksmith inventory 
+				,["corde","fer à cheval"] # Blacksmith inventory 
 				,[] # Stranger inventory 
 			,IngredientData.new("boulet",["corde","pastèque"]) # Object to find to pass the step
 			)
@@ -73,11 +73,11 @@ var list_level : Array[Level] = [
 			)
 			# 2.3
 			,LevelStep.new(
-				["banane","corde"] # Player inventory 
+				["banane","piment"] # Player inventory 
 				,["carotte","concombre","salade"] # Farmer inventory 
-				,[] # Blacksmith inventory 
+				,["corde"] # Blacksmith inventory 
 				,[] # Stranger inventory 
-			,IngredientData.new("fouet",["corde","pastèque"]) # Object to find to pass the step
+			,IngredientData.new("fouet",["corde","concombre"]) # Object to find to pass the step
 			)
 			# 2.4
 			,LevelStep.new(
@@ -89,7 +89,7 @@ var list_level : Array[Level] = [
 			)
 			# 2.5
 			,LevelStep.new(
-				["poire","salade"] # Player inventory 
+				["poire","bougie"] # Player inventory 
 				,["banane","carotte","salade"] # Farmer inventory 
 				,["corde","seau"] # Blacksmith inventory 
 				,[] # Stranger inventory 
@@ -105,9 +105,9 @@ var list_level : Array[Level] = [
 			)
 			# 2.7
 			,LevelStep.new(
-				["seau","chapeau"] # Player inventory 
+				["banane","chapeau"] # Player inventory 
 				,["salade","pastèque","poire"] # Farmer inventory 
-				,["casque","corde","perruque"] # Blacksmith inventory 
+				,["casque","seau","perruque"] # Blacksmith inventory 
 				,[] # Stranger inventory 
 			,IngredientData.new("cloche",["poire","seau"]) # Object to find to pass the step
 			)
@@ -117,9 +117,9 @@ var list_level : Array[Level] = [
 		,Level.new([
 			# 3.1
 			LevelStep.new(
-				["banane","clou"] # Player inventory 
+				["banane","fourche"] # Player inventory 
 				,["concombre","carotte"] # Farmer inventory 
-				,["épée","craie"] # Blacksmith inventory 
+				,["épée","craie","clou"] # Blacksmith inventory 
 				,["lézard"] # Stranger inventory 
 			,IngredientData.new("cactus",["clou","concombre"]) # Object to find to pass the step
 			)
@@ -133,39 +133,39 @@ var list_level : Array[Level] = [
 			)
 			# 3.3
 			,LevelStep.new(
-				["bougie","tissu"] # Player inventory 
-				,["salade","pastèque","poire"] # Farmer inventory 
-				,[] # Blacksmith inventory 
+				["clou","tissu"] # Player inventory 
+				,["salade","pastèque"] # Farmer inventory 
+				,["bougie"] # Blacksmith inventory 
 				,["lézard","seau","cactus"] # Stranger inventory 
 			,IngredientData.new("abat jour",["seau","bougie"]) # Object to find to pass the step
 			)
 			# 3.4
 			,LevelStep.new(
-				["banane","piment"] # Player inventory 
+				["banane","fer à cheval"] # Player inventory 
 				,["carotte","poire"] # Farmer inventory 
 				,["tissu","épée"] # Blacksmith inventory 
-				,["cactus","lézard"] # Stranger inventory 
+				,["piment","lézard"] # Stranger inventory 
 			,IngredientData.new("dragon",["lézard","piment"]) # Object to find to pass the step
 			)
 			# 3.5
 			,LevelStep.new(
-				["craie","seau"] # Player inventory 
+				["trombone","seau"] # Player inventory 
 				,["salade","concombre","poire"] # Farmer inventory 
 				,[] # Blacksmith inventory 
-				,["cloche","cactus"] # Stranger inventory 
+				,["cloche","cactus","craie"] # Stranger inventory 
 			,IngredientData.new("quille",["poire","craie"]) # Object to find to pass the step
 			)
 			# 3.6
 			,LevelStep.new(
-				["pastèque","clou"] # Player inventory 
-				,["salade","concombre","banane"] # Farmer inventory 
+				["concombre","clou"] # Player inventory 
+				,["salade","pastèque","banane"] # Farmer inventory 
 				,["boulet","pioche"] # Blacksmith inventory 
-				,["pioche","dragon"] # Stranger inventory 
+				,["perruque","dragon"] # Stranger inventory 
 			,IngredientData.new("boule de bowling",["pastèque","pioche"]) # Object to find to pass the step
 			)
 			# 3.7
 			,LevelStep.new(
-				["concombre","abat jour","fourche"] # Player inventory 
+				["concombre","fouet","fourche"] # Player inventory 
 				,["piment","banane","salade"] # Farmer inventory 
 				,["trombone","bougie","seau"] # Blacksmith inventory 
 				,[] # Stranger inventory 
@@ -173,9 +173,9 @@ var list_level : Array[Level] = [
 			)
 			# 3.8
 			,LevelStep.new(
-				["clou","pastèque"] # Player inventory 
+				["craie","pastèque"] # Player inventory 
 				,["poire","cochon","salade"] # Farmer inventory 
-				,["craie","trombone","tissu"] # Blacksmith inventory 
+				,["clou","trombone","tissu"] # Blacksmith inventory 
 				,["dragon","boule de bowling","lampe"] # Stranger inventory 
 			,IngredientData.new("rhinocéros",["cochon","clou"]) # Object to find to pass the step
 			)

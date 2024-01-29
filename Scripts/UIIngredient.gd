@@ -39,6 +39,7 @@ func _on_mouse_entered():
 	if !is_selected:
 		scale.x = size_scale_on_mouse_hover
 		scale.y = size_scale_on_mouse_hover
+	print("YOLO")
 		
 
 

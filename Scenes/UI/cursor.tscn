@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0888l305uwct"]
+[gd_scene load_steps=3 format=3 uid="uid://mh81h4j2bxh3"]
 
-[ext_resource type="Texture2D" uid="uid://hbwdu58ngj6s" path="res://Visual/yolo/pointeur.png" id="1_1ny1g"]
-[ext_resource type="Script" path="res://Scripts/Cursor.gd" id="2_fwpfp"]
+[sub_resource type="GDScript" id="GDScript_s3u0b"]
+script/source = "extends Control
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	position = get_viewport().get_mouse_position()
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fgmcg"]
 
 [node name="Cursor" type="Control"]
 z_index = 15
@@ -9,7 +15,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 78.0
 offset_bottom = 105.0
-script = ExtResource("2_fwpfp")
+script = SubResource("GDScript_s3u0b")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -25,5 +31,5 @@ offset_right = 87.0
 offset_bottom = 150.0
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
-texture = ExtResource("1_1ny1g")
+texture = SubResource("CompressedTexture2D_fgmcg")
 expand_mode = 1
